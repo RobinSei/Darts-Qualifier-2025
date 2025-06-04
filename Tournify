@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tournify Streams</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://www.tournify.de/live/tusa2025/present" title="TUSA 2025"></iframe>
+  <iframe src="https://www.tournify.de/live/tusb2025/present" title="TUSB 2025"></iframe>
+  <iframe src="https://www.tournify.de/live/tusc2025/present" title="TUSC 2025"></iframe>
+  <iframe src="https://www.tournify.de/live/tusd2025/present" title="TUSD 2025"></iframe>
+</body>
+</html>
