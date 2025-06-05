@@ -1,41 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tournify Streams</title>
+  <title>Darts Sieger 2025</title>
   <style>
-    /* Reset some defaults */
-    body, html {
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #1a1a1a;
+      color: #f0f0f0;
       margin: 0;
       padding: 0;
-      height: 125%;
-      width: 125%;
     }
-
-    /* Make sure the grid takes up the entire viewport */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
-      grid-template-rows: repeat(2, 1fr);    /* 2 equal-height rows */
-      height: 125vh;  /* 100% of the viewport height */
-      width: 125vw;   /* 100% of the viewport width */
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5em;
+      color: #FFD700; /* Gold */
     }
-
-    iframe {
-      width: 100%;  /* Full width of the grid cell */
-      height: 100%; /* Full height of the grid cell */
-      border: none;
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 30px auto;
+      border: 5px solid #FFD700;
+      border-radius: 10px;
+    }
+    .winner-name {
+      font-size: 2em;
+      margin-bottom: 50px;
+      color: #00ffcc;
     }
   </style>
 </head>
 <body>
-  <div class="grid-container">
-    <!-- Embed the four Tournify streams in iframes -->
-    <iframe src="https://www.tournify.de/live/tusa2025/present" title="TUSA 2025"></iframe>
-    <iframe src="https://www.tournify.de/live/tusb2025/present" title="TUSB 2025"></iframe>
-    <iframe src="https://www.tournify.de/live/tusc2025/present" title="TUSC 2025"></iframe>
-    <iframe src="https://www.tournify.de/live/tusd2025/present" title="TUSD 2025"></iframe>
-  </div>
+  <h1>Sieger 4. Gehlenbecker Darts Qualifiers 2025!</h1>
+  <img src="winner.png" alt="Siegerfoto Robin Seidel">
+  <div class="winner-name">Robin Seidel</div>
 </body>
 </html>
