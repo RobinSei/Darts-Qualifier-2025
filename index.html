@@ -13,39 +13,104 @@
       background-color: white;
       color: red;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
     body {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
-    h1 {
+    h1, .winner-name {
       font-size: 2.5vw;
       margin: 1vh 0;
       text-align: center;
+      z-index: 2;
     }
 
-    img {
+    img.main-image {
       max-height: 50vh;
       max-width: 80vw;
       margin: 2vh 0;
       object-fit: contain;
+      z-index: 2;
     }
 
-    .winner-name {
-      font-size: 2vw;
-      margin: 1vh 0;
-      text-align: center;
+    .decorative-image {
+      position: absolute;
+      height: 10vh;
+      object-fit: cover;
+      opacity: 0.7;
+      z-index: 1;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
   <h1>Sieger 4. Gehlenbecker Darts Qualifiers 2025!</h1>
-  <img src="RobinHood.png" alt="Siegerfoto Robin Seidel">
-  <div class="winner-name">Robin Seidel</div>
+  <img id="mainImage" class="main-image" alt="Siegerfoto">
+  <div class="winner-name" id="winnerName">Robin Seidel</div>
+
+  <script>
+    // 📌 Nur hier ändern:
+    const winnerImage = "Robin Hood.png";
+    const winnerName = "Robin Seidel";
+
+    const allImages = [
+      "Bosnian Beast.png",
+      "Davidovic.png",
+      "Deadeye Kübi.png",
+      "Die Eichel.png",
+      "DisruptToxic.png",
+      "Großer Stern.png",
+      "Just In Bull.png",
+      "KeeperOfTheArrow.png",
+      "Kleiner Stern.png",
+      "Lady Dartis.png",
+      "Nummer 9.png",
+      "Performance.png",
+      "Petebull.png",
+      "Robin Hood.png",
+      "Spreeno.png",
+      "Stonecold.png",
+      "Super Ingo.png",
+      "Tequilian.png",
+      "The HIIT Machine.png",
+      "The Hammernose.png",
+      "TheBarreBoy.png",
+      "TheDartingSun.png",
+      "Van Carlefeld.png",
+      "Witten Jr..png"
+    ];
+
+    // Siegerbild herausfiltern
+    const decorativeImages = allImages.filter(img => img !== winnerImage);
+
+    // Mische die restlichen Bilder und nutze 23 davon
+    const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
+
+    // Hauptbild und Name setzen
+    document.getElementById("mainImage").src = winnerImage;
+    document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
+    document.getElementById("winnerName").textContent = winnerName;
+
+    // Dekorative Bilder dynamisch einfügen
+    shuffled.forEach((src, i) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Dekobild " + (i + 1);
+      img.className = "decorative-image";
+
+      // Zufällige Position + Rotation
+      img.style.top = Math.random() * 90 + "%";
+      img.style.left = Math.random() * 90 + "%";
+      img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
+
+      document.body.appendChild(img);
+    });
+  </script>
 </body>
 </html>
