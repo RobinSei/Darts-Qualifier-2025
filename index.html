@@ -64,43 +64,63 @@
 <body>
   <h1>Sieger 4. Gehlenbecker Darts Qualifiers 2025!</h1>
   <img id="mainImage" class="main-image" alt="Siegerfoto">
-  <div class="winner-name" id="winnerName">Viktor Penner</div>
+  <div class="winner-name" id="winnerName">Robin Seidel</div>
 
   <script>
-    const winnerImage = "Davidovic.png";
-    const winnerName = "Viktor Penner";
+    window.addEventListener('DOMContentLoaded', () => {
+      // 📌 Nur hier den Sieger ändern:
+      const winnerImage = "Robin Hood.png";
+      const winnerName = "Robin Seidel";
 
-    const allImages = [
-      "Bosnian Beast.png", "Davidovic.png", "Deadeye Kübi.png", "Die Eichel.png",
-      "DisruptToxic.png", "Großer Stern.png", "Just In Bull.png", "KeeperOfTheArrow.png",
-      "Kleiner Stern.png", "Lady Dartis.png", "Nummer 9.png", "Performance.png",
-      "Petebull.png", "Robin Hood.png", "Spreeno.png", "Stonecold.png", "Super Ingo.png",
-      "Tequilian.png", "The HIIT Machine.png", "The Hammernose.png", "TheBarreBoy.png",
-      "TheDartingSun.png", "Van Carlefeld.png", "Witten Jr..png"
-    ];
+      const allImages = [
+        "Bosnian Beast.png", "Davidovic.png", "Deadeye Kübi.png", "Die Eichel.png",
+        "DisruptToxic.png", "Großer Stern.png", "Just In Bull.png", "KeeperOfTheArrow.png",
+        "Kleiner Stern.png", "Lady Dartis.png", "Nummer 9.png", "Performance.png",
+        "Petebull.png", "Robin Hood.png", "Spreeno.png", "Stonecold.png", "Super Ingo.png",
+        "Tequilian.png", "The HIIT Machine.png", "The Hammernose.png", "TheBarreBoy.png",
+        "TheDartingSun.png", "Van Carlefeld.png", "Witten Jr..png"
+      ];
 
-    const decorativeImages = allImages.filter(img => img !== winnerImage);
-    const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
+      // Bilddaten setzen
+      document.getElementById("mainImage").src = encodeURI(winnerImage);
+      document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
+      document.getElementById("winnerName").textContent = winnerName;
 
-    document.getElementById("mainImage").src = winnerImage;
-    document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
-    document.getElementById("winnerName").textContent = winnerName;
+      // Dekobilder vorbereiten
+      const decorativeImages = allImages.filter(img => img !== winnerImage);
+      const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
 
-    // 23 gleichmäßig verteilte Positionen um das Zentrum
-    const positions = [
-      { top: "2%", left: "2%" },    { top: "2%", left: "20%" },
-      { top: "2%", left: "80%" },   { top: "2%", left: "60%" },
-      { top: "2%", left: "40%" },   { top: "15%", left: "2%" },
-      { top: "15%", left: "88%" },  { top: "28%", left: "2%" },
-      { top: "28%", left: "88%" },  { bottom: "28%", left: "2%" },
-      { bottom: "28%", left: "88%" },{ bottom: "15%", left: "2%" },
-      { bottom: "15%", left: "88%" },{ bottom: "2%", left: "2%" },
-      { bottom: "2%", left: "20%" }, { bottom: "2%", left: "40%" },
-      { bottom: "2%", left: "60%" }, { bottom: "2%", left: "80%" },
-      { top: "40%", left: "2%" },    { top: "40%", left: "88%" },
-      { top: "60%", left: "2%" },    { top: "60%", left: "88%" },
-      { top: "80%", left: "45%" }
-    ];
+      // Positionen um das Hauptbild herum
+      const positions = [
+        { top: "2%", left: "2%" },    { top: "2%", left: "20%" },
+        { top: "2%", left: "80%" },   { top: "2%", left: "60%" },
+        { top: "2%", left: "40%" },   { top: "15%", left: "2%" },
+        { top: "15%", left: "88%" },  { top: "28%", left: "2%" },
+        { top: "28%", left: "88%" },  { bottom: "28%", left: "2%" },
+        { bottom: "28%", left: "88%" },{ bottom: "15%", left: "2%" },
+        { bottom: "15%", left: "88%" },{ bottom: "2%", left: "2%" },
+        { bottom: "2%", left: "20%" }, { bottom: "2%", left: "40%" },
+        { bottom: "2%", left: "60%" }, { bottom: "2%", left: "80%" },
+        { top: "40%", left: "2%" },    { top: "40%", left: "88%" },
+        { top: "60%", left: "2%" },    { top: "60%", left: "88%" },
+        { top: "80%", left: "45%" }
+      ];
 
-    shuffled.forEach((src, i) => {
-      const img = document.createElement("img");
+      shuffled.forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = encodeURI(src);
+        img.alt = "Dekobild " + (i + 1);
+        img.className = "decorative-image";
+
+        const pos = positions[i];
+        for (const [key, value] of Object.entries(pos)) {
+          img.style[key] = value;
+        }
+
+        img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
+        document.body.appendChild(img);
+      });
+    });
+  </script>
+</body>
+</html>
