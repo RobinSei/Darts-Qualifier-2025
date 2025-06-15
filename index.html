@@ -34,8 +34,8 @@
 
     h1 {
       font-size: 2.5vw;
-      margin: 0vh; /* noch enger zum Bild */
-      padding-bottom: 0vh; /* enger */
+      margin: 0vh;
+      padding-bottom: 0vh;
       text-align: center;
       z-index: 3;
       position: relative;
@@ -45,7 +45,7 @@
 
     .winner-name {
       font-size: 2.5vw;
-      margin: 0vh; /* noch enger zum Bild */
+      margin: 0vh;
       padding-top: 0vh;
       padding-bottom: 0vh;
       text-align: center;
@@ -58,111 +58,4 @@
 
     .thank-you {
       font-size: 1.8vw;
-      color: #800020;
-      font-family: 'Quicksand', sans-serif;
-      margin-top: 0;
-      margin-bottom: 3vh;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    img.main-image {
-      max-height: 50vh;
-      max-width: 80vw;
-      margin: 0.1vh 0;
-      object-fit: contain;
-      z-index: 3;
-      position: relative;
-    }
-
-    .decorative-image {
-      position: absolute;
-      height: 10vh;
-      object-fit: cover;
-      opacity: 0.7;
-      pointer-events: none;
-      z-index: 1;
-    }
-  </style>
-</head>
-<body>
-  <h1>Sieger 4. Gehlenbecker Darts Qualifiers 2025!</h1>
-  <img id="mainImage" class="main-image" alt="Siegerfoto">
-  <div class="winner-name" id="winnerName">Robin Seidel</div>
-  <div class="thank-you">Vielen Dank für eure Teilnahme!</div>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      // 📌 Nur hier den Sieger ändern:
-      const winnerImage = "Robin Hood.png";
-      const winnerName = "Robin Seidel";
-
-      const allImages = [
-        "Bosnian Beast.png", "Davidovic.png", "Deadeye Kübi.png", "Die Eichel.png",
-        "DisruptToxic.png", "Großer Stern.png", "Just In Bull.png", "KeeperOfTheArrow.png",
-        "Kleiner Stern.png", "Lady Dartis.png", "Nummer 9.png", "Performance.png",
-        "Petebull.png", "Robin Hood.png", "Spreeno.png", "Stonecold.png", "Super Ingo.png",
-        "Tequilian.png", "The HIIT Machine.png", "The Hammernose.png", "TheBarreBoy.png",
-        "TheDartingSun.png", "Van Carlefeld.png", "Witten Jr..png"
-      ];
-
-      // Hauptbild und Name setzen
-      document.getElementById("mainImage").src = winnerImage;
-      document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
-      document.getElementById("winnerName").textContent = winnerName;
-
-      // Dekobilder vorbereiten
-      const decorativeImages = allImages.filter(img => img !== winnerImage);
-      const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
-
-      const positions = [
-        // Oben (horizontal)
-        { top: "2%", left: "10%" },
-        { top: "2%", left: "25%" },
-        { top: "2%", left: "35%" },
-        { top: "2%", left: "50%" },
-        { top: "2%", left: "65%" },
-        { top: "2%", left: "80%" },
-
-        // Unten (horizontal)
-        { bottom: "2%", left: "15%" },
-        { bottom: "2%", left: "30%" },
-        { bottom: "2%", left: "45%" },
-        { bottom: "2%", left: "60%" },
-        { bottom: "2%", left: "75%" },
-
-        // Links (vertikal)
-        { top: "10%", left: "2%" },
-        { top: "25%", left: "2%" },
-        { top: "40%", left: "2%" },
-        { top: "55%", left: "2%" },
-        { top: "70%", left: "2%" },
-        { top: "85%", left: "2%" },
-
-        // Rechts (vertikal)
-        { top: "10%", left: "90%" },
-        { top: "25%", left: "90%" },
-        { top: "40%", left: "90%" },
-        { top: "55%", left: "90%" },
-        { top: "70%", left: "90%" },
-        { top: "85%", left: "90%" }
-      ];
-
-      shuffled.forEach((src, i) => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = "Dekobild " + (i + 1);
-        img.className = "decorative-image";
-
-        const pos = positions[i];
-        for (const [key, value] of Object.entries(pos)) {
-          img.style[key] = value;
-        }
-
-        img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
-        document.body.appendChild(img);
-      });
-    });
-  </script>
-</body>
-</html>
+      color:
