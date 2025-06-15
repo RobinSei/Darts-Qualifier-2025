@@ -18,6 +18,7 @@
       color: #800020; /* dunkles Weinrot */
       font-family: 'Quicksand', sans-serif;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     body {
@@ -27,25 +28,43 @@
       justify-content: center;
       align-items: center;
       z-index: 0;
+      border: 5px solid #800020; /* Rahmen um die Seite */
+      padding: 1rem; /* Innenabstand zum Rahmen */
     }
 
     h1 {
       font-size: 2.5vw;
-      margin: 1vh 0;
+      margin: 0 0 0.5vh 0;
       text-align: center;
       z-index: 3;
       position: relative;
       font-family: 'Pacifico', cursive;
+      text-decoration: underline;
+      /* Text etwas näher zum Bild schieben */
+      padding-bottom: 0.5vh;
     }
 
     .winner-name {
       font-size: 2.5vw;
-      margin: 1vh 0;
+      margin: 0 0 0.5vh 0;
       text-align: center;
       font-weight: bold;
       z-index: 3;
       position: relative;
       font-family: 'Pacifico', cursive;
+      text-decoration: underline;
+      /* Text etwas näher zum Bild schieben */
+      padding-bottom: 0.5vh;
+    }
+
+    .thank-you {
+      font-size: 1.8vw;
+      color: #800020;
+      font-family: 'Quicksand', sans-serif;
+      margin-top: 0;
+      margin-bottom: 2vh;
+      text-align: center;
+      font-weight: 600;
     }
 
     img.main-image {
@@ -71,6 +90,7 @@
   <h1>Sieger 4. Gehlenbecker Darts Qualifiers 2025!</h1>
   <img id="mainImage" class="main-image" alt="Siegerfoto">
   <div class="winner-name" id="winnerName">Robin Seidel</div>
+  <div class="thank-you">Vielen Dank für eure Teilnahme!</div>
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
