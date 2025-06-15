@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darts Sieger 2025</title>
   <style>
     html, body {
@@ -22,13 +22,22 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      z-index: 2;
     }
 
-    h1, .winner-name {
+    h1 {
       font-size: 2.5vw;
       margin: 1vh 0;
       text-align: center;
-      z-index: 2;
+      z-index: 3;
+    }
+
+    .winner-name {
+      font-size: 2.5vw;
+      margin: 1vh 0;
+      text-align: center;
+      font-weight: bold; /* FETT */
+      z-index: 3;
     }
 
     img.main-image {
@@ -36,7 +45,8 @@
       max-width: 80vw;
       margin: 2vh 0;
       object-fit: contain;
-      z-index: 2;
+      z-index: 3;
+      position: relative;
     }
 
     .decorative-image {
@@ -44,8 +54,8 @@
       height: 10vh;
       object-fit: cover;
       opacity: 0.7;
-      z-index: 1;
       pointer-events: none;
+      z-index: 1;
     }
   </style>
 </head>
@@ -89,24 +99,43 @@
     // Siegerbild herausfiltern
     const decorativeImages = allImages.filter(img => img !== winnerImage);
 
-    // Mische die restlichen Bilder und nutze 23 davon
+    // Zufällig mischen und 23 Bilder auswählen
     const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
 
-    // Hauptbild und Name setzen
+    // Siegerbild & Name einfügen
     document.getElementById("mainImage").src = winnerImage;
     document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
     document.getElementById("winnerName").textContent = winnerName;
 
-    // Dekorative Bilder dynamisch einfügen
+    // Vermeide Überlappung in der Bildmitte (zentrale 30–70% der Fläche)
+    const avoidZone = {
+      xMin: 30,
+      xMax: 70,
+      yMin: 30,
+      yMax: 70,
+    };
+
+    // Hilfsfunktion zur sicheren Platzierung
+    function generateSafePosition() {
+      let x, y;
+      do {
+        x = Math.random() * 100;
+        y = Math.random() * 100;
+      } while (x >= avoidZone.xMin && x <= avoidZone.xMax && y >= avoidZone.yMin && y <= avoidZone.yMax);
+      return { x, y };
+    }
+
+    // Dekobilder einfügen
     shuffled.forEach((src, i) => {
       const img = document.createElement("img");
       img.src = src;
       img.alt = "Dekobild " + (i + 1);
       img.className = "decorative-image";
 
-      // Zufällige Position + Rotation
-      img.style.top = Math.random() * 90 + "%";
-      img.style.left = Math.random() * 90 + "%";
+      const { x, y } = generateSafePosition();
+
+      img.style.top = y + "%";
+      img.style.left = x + "%";
       img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
 
       document.body.appendChild(img);
