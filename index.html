@@ -22,7 +22,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 2;
+      z-index: 0;
     }
 
     h1 {
@@ -30,14 +30,16 @@
       margin: 1vh 0;
       text-align: center;
       z-index: 3;
+      position: relative;
     }
 
     .winner-name {
       font-size: 2.5vw;
       margin: 1vh 0;
       text-align: center;
-      font-weight: bold; /* FETT */
+      font-weight: bold;
       z-index: 3;
+      position: relative;
     }
 
     img.main-image {
@@ -65,81 +67,40 @@
   <div class="winner-name" id="winnerName">Robin Seidel</div>
 
   <script>
-    // 📌 Nur hier ändern:
     const winnerImage = "Robin Hood.png";
     const winnerName = "Robin Seidel";
 
     const allImages = [
-      "Bosnian Beast.png",
-      "Davidovic.png",
-      "Deadeye Kübi.png",
-      "Die Eichel.png",
-      "DisruptToxic.png",
-      "Großer Stern.png",
-      "Just In Bull.png",
-      "KeeperOfTheArrow.png",
-      "Kleiner Stern.png",
-      "Lady Dartis.png",
-      "Nummer 9.png",
-      "Performance.png",
-      "Petebull.png",
-      "Robin Hood.png",
-      "Spreeno.png",
-      "Stonecold.png",
-      "Super Ingo.png",
-      "Tequilian.png",
-      "The HIIT Machine.png",
-      "The Hammernose.png",
-      "TheBarreBoy.png",
-      "TheDartingSun.png",
-      "Van Carlefeld.png",
-      "Witten Jr..png"
+      "Bosnian Beast.png", "Davidovic.png", "Deadeye Kübi.png", "Die Eichel.png",
+      "DisruptToxic.png", "Großer Stern.png", "Just In Bull.png", "KeeperOfTheArrow.png",
+      "Kleiner Stern.png", "Lady Dartis.png", "Nummer 9.png", "Performance.png",
+      "Petebull.png", "Robin Hood.png", "Spreeno.png", "Stonecold.png", "Super Ingo.png",
+      "Tequilian.png", "The HIIT Machine.png", "The Hammernose.png", "TheBarreBoy.png",
+      "TheDartingSun.png", "Van Carlefeld.png", "Witten Jr..png"
     ];
 
-    // Siegerbild herausfiltern
     const decorativeImages = allImages.filter(img => img !== winnerImage);
-
-    // Zufällig mischen und 23 Bilder auswählen
     const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
 
-    // Siegerbild & Name einfügen
     document.getElementById("mainImage").src = winnerImage;
     document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
     document.getElementById("winnerName").textContent = winnerName;
 
-    // Vermeide Überlappung in der Bildmitte (zentrale 30–70% der Fläche)
-    const avoidZone = {
-      xMin: 30,
-      xMax: 70,
-      yMin: 30,
-      yMax: 70,
-    };
+    // 23 gleichmäßig verteilte Positionen um das Zentrum
+    const positions = [
+      { top: "2%", left: "2%" },    { top: "2%", left: "20%" },
+      { top: "2%", left: "80%" },   { top: "2%", left: "60%" },
+      { top: "2%", left: "40%" },   { top: "15%", left: "2%" },
+      { top: "15%", left: "88%" },  { top: "28%", left: "2%" },
+      { top: "28%", left: "88%" },  { bottom: "28%", left: "2%" },
+      { bottom: "28%", left: "88%" },{ bottom: "15%", left: "2%" },
+      { bottom: "15%", left: "88%" },{ bottom: "2%", left: "2%" },
+      { bottom: "2%", left: "20%" }, { bottom: "2%", left: "40%" },
+      { bottom: "2%", left: "60%" }, { bottom: "2%", left: "80%" },
+      { top: "40%", left: "2%" },    { top: "40%", left: "88%" },
+      { top: "60%", left: "2%" },    { top: "60%", left: "88%" },
+      { top: "80%", left: "45%" }
+    ];
 
-    // Hilfsfunktion zur sicheren Platzierung
-    function generateSafePosition() {
-      let x, y;
-      do {
-        x = Math.random() * 100;
-        y = Math.random() * 100;
-      } while (x >= avoidZone.xMin && x <= avoidZone.xMax && y >= avoidZone.yMin && y <= avoidZone.yMax);
-      return { x, y };
-    }
-
-    // Dekobilder einfügen
     shuffled.forEach((src, i) => {
       const img = document.createElement("img");
-      img.src = src;
-      img.alt = "Dekobild " + (i + 1);
-      img.className = "decorative-image";
-
-      const { x, y } = generateSafePosition();
-
-      img.style.top = y + "%";
-      img.style.left = x + "%";
-      img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
-
-      document.body.appendChild(img);
-    });
-  </script>
-</body>
-</html>
