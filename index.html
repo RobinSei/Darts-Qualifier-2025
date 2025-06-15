@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -34,8 +35,8 @@
 
     h1 {
       font-size: 2.5vw;
-      margin: 0;
-      padding-bottom: 0;
+      margin: 0vh; /* noch enger zum Bild */
+      padding-bottom: 0vh; /* enger */
       text-align: center;
       z-index: 3;
       position: relative;
@@ -45,9 +46,9 @@
 
     .winner-name {
       font-size: 2.5vw;
-      margin: 0;
-      padding-top: 0;
-      padding-bottom: 0;
+      margin: 0vh; /* noch enger zum Bild */
+      padding-top: 0vh;
+      padding-bottom: 0vh;
       text-align: center;
       font-weight: bold;
       z-index: 3;
@@ -64,8 +65,6 @@
       margin-bottom: 3vh;
       text-align: center;
       font-weight: 600;
-      z-index: 3;
-      position: relative;
     }
 
     img.main-image {
@@ -84,17 +83,6 @@
       opacity: 0.7;
       pointer-events: none;
       z-index: 1;
-      animation: float 4s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(var(--rotate, 0deg));
-      }
-      50% {
-        transform: translateY(-10px) rotate(var(--rotate, 0deg));
-      }
     }
   </style>
 </head>
@@ -120,9 +108,8 @@
       ];
 
       // Hauptbild und Name setzen
-      const mainImage = document.getElementById("mainImage");
-      mainImage.src = winnerImage;
-      mainImage.alt = "Siegerfoto " + winnerName;
+      document.getElementById("mainImage").src = winnerImage;
+      document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
       document.getElementById("winnerName").textContent = winnerName;
 
       // Dekobilder vorbereiten
@@ -173,9 +160,7 @@
           img.style[key] = value;
         }
 
-        const rotation = Math.floor(Math.random() * 30 - 15);
-        img.style.setProperty('--rotate', `${rotation}deg`);
-
+        img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
         document.body.appendChild(img);
       });
     });
