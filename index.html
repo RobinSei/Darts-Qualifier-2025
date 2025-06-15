@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darts Sieger 2025</title>
 
-  <!-- Google Fonts für kreative Schriftarten -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -88,11 +88,11 @@
       ];
 
       // Hauptbild und Name setzen
-      document.getElementById("mainImage").src = encodeURI(winnerImage);
+      document.getElementById("mainImage").src = winnerImage;
       document.getElementById("mainImage").alt = "Siegerfoto " + winnerName;
       document.getElementById("winnerName").textContent = winnerName;
 
-      // Dekobilder auswählen
+      // Dekobilder vorbereiten
       const decorativeImages = allImages.filter(img => img !== winnerImage);
       const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
 
@@ -115,3 +115,35 @@
         // Links (vertikal)
         { top: "10%", left: "2%" },
         { top: "25%", left: "2%" },
+        { top: "40%", left: "2%" },
+        { top: "55%", left: "2%" },
+        { top: "70%", left: "2%" },
+        { top: "85%", left: "2%" },
+
+        // Rechts (vertikal)
+        { top: "10%", left: "90%" },
+        { top: "25%", left: "90%" },
+        { top: "40%", left: "90%" },
+        { top: "55%", left: "90%" },
+        { top: "70%", left: "90%" },
+        { top: "85%", left: "90%" }
+      ];
+
+      shuffled.forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Dekobild " + (i + 1);
+        img.className = "decorative-image";
+
+        const pos = positions[i];
+        for (const [key, value] of Object.entries(pos)) {
+          img.style[key] = value;
+        }
+
+        img.style.transform = `rotate(${Math.floor(Math.random() * 30 - 15)}deg)`;
+        document.body.appendChild(img);
+      });
+    });
+  </script>
+</body>
+</html>
