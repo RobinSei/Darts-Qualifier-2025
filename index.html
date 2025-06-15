@@ -91,20 +91,41 @@
       const shuffled = decorativeImages.sort(() => Math.random() - 0.5).slice(0, 23);
 
       // Positionen um das Hauptbild herum
-      const positions = [
-  { top: "3%", left: "2%" },     { top: "3%", left: "20%" },
-  { top: "3%", left: "40%" },    { top: "3%", left: "60%" },
-  { top: "3%", left: "80%" },    { top: "15%", left: "5%" },
-  { top: "15%", left: "85%" },   { top: "30%", left: "3%" },
-  { top: "30%", left: "87%" },   { bottom: "30%", left: "3%" },
-  { bottom: "30%", left: "87%" },{ bottom: "15%", left: "5%" },
-  { bottom: "15%", left: "85%" },{ bottom: "5%", left: "5%" },
-  { bottom: "5%", left: "25%" }, { bottom: "5%", left: "45%" },
-  { bottom: "5%", left: "65%" }, { bottom: "5%", left: "85%" },
-  { top: "40%", left: "2%" },    { top: "40%", left: "88%" },
-  { top: "60%", left: "2%" },    { top: "60%", left: "88%" },
-  { top: "80%", left: "45%" }
+     const positions = [
+  // Obere Zeile
+  { top: "3%", left: "4%" },
+  { top: "3%", left: "20%" },
+  { top: "3%", left: "36%" },
+  { top: "3%", left: "60%" },
+  { top: "3%", left: "76%" },
+
+  // Rechte Seite
+  { top: "15%", left: "85%" },
+  { top: "30%", left: "88%" },
+  { top: "45%", left: "90%" },
+  { top: "65%", left: "88%" },
+  { top: "80%", left: "85%" },
+
+  // Untere Zeile (nicht mittig!)
+  { bottom: "5%", left: "5%" },
+  { bottom: "5%", left: "25%" },
+  { bottom: "5%", left: "45%" },
+  { bottom: "5%", left: "65%" },
+  { bottom: "5%", left: "85%" },
+
+  // Linke Seite
+  { top: "15%", left: "3%" },
+  { top: "30%", left: "2%" },
+  { top: "45%", left: "1%" },
+  { top: "65%", left: "2%" },
+  { top: "80%", left: "3%" },
+
+  // Extra versetzte Positionen
+  { top: "20%", left: "45%" },
+  { bottom: "20%", left: "45%" },
+  { top: "50%", left: "10%" }
 ];
+
 
       shuffled.forEach((src, i) => {
         const img = document.createElement("img");
